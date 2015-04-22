@@ -12,4 +12,7 @@ import (
 )
 
 func New(service *bridge.Service) *Document {
+	metadata := CBMetaData{
+		Data: service.Attrs,
+	}
 }
