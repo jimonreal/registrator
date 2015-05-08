@@ -1,18 +1,9 @@
 package couchbase
 
-import (
-	"log"
-	"net"
-	"net/url"
-	"os"
-	"strconv"
-
-	couchbase "github.com/couchbaselabs/gocb"
-	"github.com/gliderlabs/registrator/bridge"
-)
-
-func New(service *bridge.Service) *Document {
-	metadata := CBMetaData{
-		Data: service.Attrs,
+func mapDefault(m map[string]string, key, default_ string) string {
+	v, ok := m[key]
+	if !ok || v == "" {
+		return default_
 	}
+	return v
 }

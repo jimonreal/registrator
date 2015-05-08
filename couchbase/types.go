@@ -1,24 +1,31 @@
 package couchbase
 
+import "github.com/gliderlabs/registrator/bridge"
+
 type Document struct {
 	ContainerId   string
 	ContainerType string
-	Location      ContainerLocation
-	MetaData      CBMetaData
-	Created       int64
-	Updated       int64
+	//	Location      ContainerLocation
+	Location bridge.ServicePort
+	MetaData map[string]string
+	Created  int64
+	Updated  int64
+	LBConfig LoadBalancerConfig
+	Enable   string
 }
 
-type ContainerLocation struct {
-	HostIp       string
-	PortsMapping map[string]ContainerPorts
-}
+//type ContainerLocation struct {
+//	HostIp       string
+//	PortsMapping map[string]ServicePort
+//}
 
-type ContainerPorts struct {
-	HostPort     string
-	HostPortType string
-}
+//type CBMetaData struct {
+//	Data map[string]string
+//}
 
-type CBMetaData struct {
-	Data map[string]string
+type LoadBalancerConfig struct {
+	Enable  string
+	Mode    string
+	Balance string
+	Param   string
 }
